@@ -18,7 +18,7 @@ namespace Basically
         {
             CreateWebHostBuilder(args).Build().Run();
 
-            //var x = (new Connector()).List<Site>();
+            
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

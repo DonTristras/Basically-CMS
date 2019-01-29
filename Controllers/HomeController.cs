@@ -5,13 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Basically.Models;
+using Basically.Infrastructure;
 
 namespace Basically.Controllers
 {
     public class HomeController : Controller
     {
+        private Connector _Conn;
+        public HomeController(Connector Connector) {
+            _Conn = Connector;
+        }
         public IActionResult Index()
         {
+            //Site _Site = new Site { Cultures = "en|es".Split("|").ToArray(), Name = "MySite" };
+            //_Conn.Create(_Site);
+            //Tree _tree = new Tree { Content = "some content", Name = "MyTree", Site = _Site };
+            //_Conn.Create(_tree);
+
+
+            //_Conn.Delete<Site>(_Site._id);
+            var x = _Conn.List<Site>();
             return View();
         }
 
