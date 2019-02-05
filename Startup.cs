@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Basically.Infrastructure;
 using System.IO;
+using Newtonsoft.Json.Serialization;
 using Basically.Models;
 
 namespace Basically
@@ -34,9 +35,10 @@ namespace Basically
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                    .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddSingleton(new Connector(Configuration));
+            services.AddSingleton<IConnector>(new Connector(Configuration));
 
             //services.AddTransient<ITest>();
             //var serviceProvider = services.BuildServiceProvider();

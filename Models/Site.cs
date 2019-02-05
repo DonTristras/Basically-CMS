@@ -13,6 +13,8 @@ namespace Basically.Models
         [Required]
         [MaxLength(128)]
         public string name { get; set; }
-        public List<int> culture_ids { get; set; }
+        [Required]
+        [MaxLength(128)]
+        public string domain { get; set; }
     }
 }
