@@ -40,10 +40,6 @@ namespace Basically
 
             services.AddSingleton<IConnector>(new Connector(Configuration));
 
-            //services.AddTransient<ITest>();
-            //var serviceProvider = services.BuildServiceProvider();
-            //var service = serviceProvider.GetService<Connector>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

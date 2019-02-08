@@ -13,5 +13,6 @@
     <Import Project="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.app\2.1.1\build\netcoreapp2.1\Microsoft.AspNetCore.App.targets" Condition="Exists('C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.app\2.1.1\build\netcoreapp2.1\Microsoft.AspNetCore.App.targets')" />
     <Import Project="$(NuGetPackageRoot)dotlessbuildtasksdotnet\2.0.0\build\DotLessBuildTasksDotNet.targets" Condition="Exists('$(NuGetPackageRoot)dotlessbuildtasksdotnet\2.0.0\build\DotLessBuildTasksDotNet.targets')" />
     <Import Project="$(NuGetPackageRoot)delegate.sassbuilder\1.4.0\build\Delegate.SassBuilder.targets" Condition="Exists('$(NuGetPackageRoot)delegate.sassbuilder\1.4.0\build\Delegate.SassBuilder.targets')" />
+    <Import Project="$(NuGetPackageRoot)buildbundlerminifier\2.8.391\build\BuildBundlerMinifier.targets" Condition="Exists('$(NuGetPackageRoot)buildbundlerminifier\2.8.391\build\BuildBundlerMinifier.targets')" />
   </ImportGroup>
 </Project>

@@ -3,5 +3,20 @@
     IEnumerable<Site> Sites = ViewBag.SiteList;
 }
 <section class="row">
-   <div id="jtable-site"></div>
+    <div class="col-md-3">
+        <a href="~/Site/Index">
+            <div class="option-box">
+                <span class="option-title">Sites</span>
+                <i class="fas fa-book"></i>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="~/Cultures/Index">
+            <div class="option-box">
+                <span class="option-title">Cultures</span>
+                <i class="fas fa-language"></i>
+            </div>
+        </a>
+    </div>
 </section>

@@ -9,31 +9,31 @@ using LiteDB;
 
 namespace Basically.Controllers
 {
-    public class SiteController : Controller
+    public class DocumentController : Controller
     {
         private IConnector db;
-        public SiteController(IConnector Connector)
+        public DocumentController(IConnector Connector)
         {
             db = Connector;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? site_id)
         {
-            //Get list of Sites and return in a viewbag
-            //ViewBag.SiteList = db.List<Site>().FindAll();
-            return View();
+            //PW: return document list, as herarchie tree
+            Document RootDocument = db.List<Document>().Find(Query.And(Query.EQ("site.$id", site_id), Query.EQ("is_root", true))).FirstOrDefault();
+            ViewBag.ChildDocs = db.List<Document>().Find(Query.And(Query.EQ("site.$id", site_id), Query.EQ("parent_id", RootDocument._id))).ToList();
+            return View(RootDocument);
         }
 
         [HttpPost]
-        public JsonResult List(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult List()
         {
             try
             {
                 //PW: return ordered list, sliced, chucked and ordered
-                IEnumerable<Site> SiteList = db.List<Site>().FindAll();
-                int TotalRecords = SiteList.Count();
-                var ChunkedSiteList = SiteList.OrderByDynamic(jtSorting).Skip(jtStartIndex).Take(jtPageSize);
-                return Json(new { Result = "OK", Records = ChunkedSiteList, TotalRecordCount = TotalRecords });
+                IEnumerable<Document> CurrentSiteTree = db.List<Document>().Find(Query.EQ("site.$id",18));
+               // var ChunkedSiteList = SiteList.OrderByDynamic(jtSorting).Skip(jtStartIndex).Take(jtPageSize);
+                return Json(new { Result = "OK", Records = CurrentSiteTree });
             }
             catch (Exception ex)
             {
@@ -42,10 +42,12 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(Site Model) {
+        public JsonResult Create(Document Model) {
 
             try
             {
+                Site site = db.List<Site>().FindById(Int32.Parse(Model.content));
+                Model.site = site;
                 db.Create(Model);
                 return Json(new { Result = "OK",  Record = Model});
             }
@@ -61,7 +63,7 @@ namespace Basically.Controllers
             try
             {
                 //PW: Delete model
-                db.Delete<Site>(_id);
+                db.Delete<Document>(_id);
                 return Json(new { Result = "OK" });
             }
             catch (Exception ex)
@@ -71,12 +73,12 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(Site Model)
+        public JsonResult Update(Document Model)
         {
             try
             {
                 //PW: Update model
-                db.Update<Site>(Model);
+                db.Update<Document>(Model);
                 return Json(new { Result = "OK"});
             }
             catch (Exception ex)

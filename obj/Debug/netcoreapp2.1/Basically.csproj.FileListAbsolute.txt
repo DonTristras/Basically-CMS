@@ -2,6 +2,9 @@ C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically
 C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically.runtimeconfig.json
 C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically.runtimeconfig.dev.json
 C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically.dll
+C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically.pdb
+C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically.Views.dll
+C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically.Views.pdb
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.csproj.CoreCompileInputs.cache
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.RazorAssemblyInfo.cache
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.RazorAssemblyInfo.cs
@@ -19,11 +22,10 @@ C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Vie
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.RazorTargetAssemblyInfo.cache
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.RazorTargetAssemblyInfo.cs
-C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically.pdb
-C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically.Views.dll
-C:\Users\Paul\source\repos\Basically\Basically\bin\Debug\netcoreapp2.1\Basically.Views.pdb
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.Views.pdb
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.dll
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.pdb
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.csproj.CopyComplete
+C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Site\Index.g.cshtml.cs
+C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Document\index.g.cshtml.cs
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.csprojAssemblyReference.cache
