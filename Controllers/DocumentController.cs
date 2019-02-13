@@ -20,9 +20,8 @@ namespace Basically.Controllers
         public IActionResult Index(int? site_id)
         {
             //PW: return document list, as herarchie tree
-            Document RootDocument = db.List<Document>().Find(Query.And(Query.EQ("site.$id", site_id), Query.EQ("is_root", true))).FirstOrDefault();
-            ViewBag.ChildDocs = db.List<Document>().Find(Query.And(Query.EQ("site.$id", site_id), Query.EQ("parent_id", RootDocument._id))).ToList();
-            return View(RootDocument);
+            ViewBag.SiteID = site_id;
+            return View();
         }
 
         [HttpPost]
@@ -34,6 +33,38 @@ namespace Basically.Controllers
                 IEnumerable<Document> CurrentSiteTree = db.List<Document>().Find(Query.EQ("site.$id",18));
                // var ChunkedSiteList = SiteList.OrderByDynamic(jtSorting).Skip(jtStartIndex).Take(jtPageSize);
                 return Json(new { Result = "OK", Records = CurrentSiteTree });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult GetRoot(int? site_id)
+        {
+            try
+            {
+                //PW: return root document for site_id
+                Document RootDocument = db.List<Document>().Find(Query.And(Query.EQ("site.$id", site_id), Query.EQ("is_root", true))).FirstOrDefault();
+                return Json(new { Result = "OK", Record = RootDocument });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult ListChildren(int? parent_id)
+        {
+            try
+            {
+                //PW: return child documents with its children count
+                var Children = db.List<Document>().Find(Query.EQ("parent_id", parent_id)).ToList();
+                var CountedChildren = from c in Children
+                                      select new { document = c, childCount = db.List<Document>().Find(Query.EQ("parent_id", c._id)).Count() };
+                return Json(new { Result = "OK", Records = CountedChildren });
             }
             catch (Exception ex)
             {

@@ -8,18 +8,12 @@
 <section class="row">
     <input type="hidden" value="@ViewBag.SiteID" id="site-id" />
     <div id="jtable-document"></div>
-    <div class="col-md-12">
-        <ul>
-            <li data-id="@Model._id">
-                <span>@Model.name</span>
-                <ul>
-                    @foreach (var d in FirtLevelDocs)
-                    {
-                        <li data-id="@d._id">@d.name</li>
-                    }
-                </ul>
-            </li>
-        </ul>
+    <div class="col-md-4 side-bar" id="DocumentTree">
+
     </div>
+    <div class="col-md-8 content-area" id="DocumentForm">
+
+    </div>
+    
 </section>
 

@@ -62,7 +62,7 @@ using Basically.Models;
             WriteLiteral("<section class=\"row\">\r\n    <div class=\"col-md-3\">\r\n        ");
             EndContext();
             BeginContext(153, 197, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4bd58608dc84d458315b9fdb9596e78", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "af917377113d4f74904aaf647201b477", async() => {
                 BeginContext(176, 170, true);
                 WriteLiteral("\r\n            <div class=\"option-box\">\r\n                <span class=\"option-title\">Sites</span>\r\n                <i class=\"fas fa-book\"></i>\r\n            </div>\r\n        ");
                 EndContext();
@@ -83,7 +83,7 @@ using Basically.Models;
             WriteLiteral("\r\n    </div>\r\n    <div class=\"col-md-3\">\r\n        ");
             EndContext();
             BeginContext(400, 208, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f7a41e7fe5ff4774af486a603211adb9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c7a8caf7c0234d3cbe2bafd819a0a339", async() => {
                 BeginContext(427, 177, true);
                 WriteLiteral("\r\n            <div class=\"option-box\">\r\n                <span class=\"option-title\">Cultures</span>\r\n                <i class=\"fas fa-language\"></i>\r\n            </div>\r\n        ");
                 EndContext();
