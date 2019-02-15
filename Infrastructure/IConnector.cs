@@ -8,5 +8,6 @@ namespace Basically.Infrastructure
         void Delete<T>(int id);
         LiteCollection<T> List<T>();
         void Update<T>(T Model);
+        T GetByID<T>(int id);
     }
 }

@@ -1,0 +1,30 @@
+﻿/*Document tree element*/
+
+#document-tree {
+    ul {
+         padding-left: 6px;
+    }
+    li {
+        list-style: none;
+    }
+    li:before {
+        background-image: url(https://www.heartofbiking.org.nz/assets/Uploads/HOB-Icon-Attract-25px.png);
+        background-size: 100%;
+        display: inline-block;
+        height: 13px;
+        width: 13px;
+        margin: 0px 6px;
+        content: "";
+    }
+    .child-loader, .document-item {
+        cursor: pointer;
+    }
+    .load-less:after {
+        font-family:FontAwesome;
+        content: '-';
+    }
+    .load-more:after {
+        font-family: FontAwesome;
+        content: '+';
+    }
+}

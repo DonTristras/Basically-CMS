@@ -6,19 +6,27 @@ var documentApp = (function () {
     var self = this;
     var element = null;
     var target = null;
-    var site_id = $("#site-id").val();
-    var liClass = "document-item";
-    var ulClass = "document-list";
+    var site_id = null;
+
+    var classes = {
+        liClass: "document-item",
+        ulClass: "document-list",
+        loadMore: "load-more",
+        loadLess: "load-less",
+        childLoader: "child-loader"
+    }
 
     var config = {
         //PW: definition
         element: null,
-        targetWindow: null
+        targetWindow: null,
+        site_id: null
     }
     //PW: initialization of module
     var init = function (config) {
         element = $(config.element);
         target = $(config.targetWindow);
+        site_id = config.site_id;
         //PW: check if base element and target element exists in DOM
         if ($(element).length > 0 || $(target).length > 0 ) {
             loadRootElement();
@@ -35,6 +43,8 @@ var documentApp = (function () {
             success: function (data) {
                 if (data.Result == "OK") {
                     renderRootElement({ document: data.Record });
+                    //PW: Trigger load more event for root
+                    $(classes.childLoader + ":first", element).trigger("click");
                 }
             },
             error: function () {
@@ -56,26 +66,39 @@ var documentApp = (function () {
         $(renderedList).append(renderedDocument);
         $(element).append(renderedList); 
         //PW: Bind listeners
-        $(loadMore).on("click", loadChildElements(loadMore));
-        $(renderedDocumentv).on("click", loadContent(renderedDocument));
+        bindClickEvent(loadMore, loadChildElements);
+        bindClickEvent(loadMore, loadContent);
+    };
+
+    //PW:Click event binder for dom elements
+    var bindClickEvent = function (elem, func) {
+        $(elem).on("click", function () { func(elem); });
     };
 
     //PW: load content of document handler
     var loadContent = function (elem) {
-
+        var form = formControllers;
+        form.init({
+            element: elem,
+            documentID: $(elem).attr("data-id"),
+            formDefinition: $(elem).attr("data-id")
+        });
     };
 
     //PW: load or unload child document handler
-    var loadChildElements = function () {
-        if ($(this).hasClass("load-more")) {
-            getChildElements(this);
-        } else if($(this).hasClass("load-less")){
-            removeChildElements(this);
+    var loadChildElements = function (elem) {
+        var liElem = $(elem).parent();//PW get parent li element
+        if ($(elem).hasClass(classes.loadMore)) {
+            getChildElements(liElem);
+            $(elem).removeClass(classes.loadMore).addClass(classes.loadLess);//switch class
+        } else if ($(elem).hasClass(classes.loadLess)){
+            removeChildElements($(liElem).children("ul"));
+            $(elem).removeClass(classes.loadLess).addClass(classes.loadMore);//switch class
         }
     };
     //PW: remove child docuemnts from tree
     var removeChildElements = function (parentElement) {
-
+        $(parentElement).remove();
     };
 
     //PW: Invoke child documents and render in parent
@@ -85,7 +108,7 @@ var documentApp = (function () {
             type: 'POST',
             async: true,
             dataType: "json",
-            data: { 'parent_id': $(parentElement).attr(data - parentId) },
+            data: { 'parent_id': $(parentElement).attr("data-id") },
             success: function (data) {
                 if (data.Result == "OK") {
                     renderChildElements(data.Records, parentElement);
@@ -104,11 +127,11 @@ var documentApp = (function () {
         $.each(records, function (index, value) {
             var document = renderTemplate(value);
             $(renderedParent).append(document);
-            $(document).on("click", loadContent(document));
-            if (record.childCount > 0) {
+            bindClickEvent(loadMore, loadContent);
+            if (value.childCount > 0) {
                 var loadMore = loadMoreTemplate();
                 $(document).append(loadMore);
-                $(loadMore).on("click", loadChildElements(loadMore));
+                bindClickEvent(loadMore, loadChildElements);
             }
         });
         $(parentElement).append(renderedParent);
@@ -116,19 +139,19 @@ var documentApp = (function () {
 
     //PW: template for read more button
     var loadMoreTemplate = function () {
-        var template = $("<span></span>").addClass("load-more").text("+");
+        var template = $("<span></span>").addClass(classes.loadMore).addClass(classes.childLoader);
         return template;
     };
 
     //PW: template for each list item element
     var renderTemplate = function (elem) {
-        var template = $("<li></li>").addClass(liClass).attr("data-id", elem.document._id).text(elem.document.name);
+        var template = $("<li></li>").addClass(classes.liClass).attr("data-id", elem.document._id).text(elem.document.name);
         return template;
     };
 
     //PW: template for each list element
     var renderWrapTemplate = function () {
-        var template = $("<ul></ul>").addClass(ulClass)
+        var template = $("<ul></ul>").addClass(classes.ulClass)
         return template;
     };
 

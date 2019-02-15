@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARHQDtXUNl02Is6w6mP+y/QAAAAACAAAAAAAQZgAAAAEAACAAAAAaxvE+Mkm5vmvRH+n+Li+ugNwF5iYmmadxb37UXPL/1wAAAAAOgAAAAAIAACAAAABm6IYePamFevPqQNCKUVUwOz4pBgKm4i0CHbvO8N9cWSAAAABPRpsXx8uWexUph/SWSE9AsD2augG5PuuHwjRIsFL77kAAAABukRr0gye63uimqD1OvYmdjB7OrYqgoyOAOU92fc3b2zdTwzXQ8qcpftCvHtaP1Es+XUS1fk18UutT2aCmhhEg</EncryptedPassword>
-    <_PublishTargetUrl>ftp://192.168.1.20/usr/src/docker/basically/src</_PublishTargetUrl>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARHQDtXUNl02Is6w6mP+y/QAAAAACAAAAAAAQZgAAAAEAACAAAABON2vd/VVuUDQ74yRa4ALfvkj3yIwmOHjYVIQQG+qaiAAAAAAOgAAAAAIAACAAAAD3v+/UDRX6NejZV6Im8e2id4+/340h394fP/3B88y5jCAAAADI7Ik5IbSL/rcvwyHamfvIVBRqNfdO2f/O1wEDP1/sgEAAAADFzz85jYRx4lEYwVHUmF+Pwl7p5Gz9DEqPMd6l+e9THM3TykeKMqfGQO4pooseXEeGcIOlYxlwaaIYSTtOgeye</EncryptedPassword>
+    <_PublishTargetUrl>ftp://192.168.1.20/docker1</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

@@ -54,6 +54,12 @@ namespace Basically.Infrastructure
             }
         }
 
+        public T GetByID<T>(int id) {
+            using (var db = new LiteDatabase(DbFileLocation))
+            {
+                return db.GetCollection<T>(typeof(T).Name).FindById(id);
+            }
+        }
         //PW: Method Allow reference deletions
         private void DeleteReferences(int id, string referencedType, string targetType)
         {

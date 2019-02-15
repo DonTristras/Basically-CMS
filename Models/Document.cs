@@ -21,6 +21,9 @@ namespace Basically.Models
         public int level { get; set; }
         public bool is_root { get; set; }
         public int parent_id { get; set; }
+        [BsonRef("DynamicObject")]
+        [Required]
+        public string dynamic_object { get; set; }
         [BsonRef("Site")]
         [Required]
         public Site site { get; set; }

@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Content Remove="appsettings.json" />
-    <Content Remove="wwwroot\js\jQuery-modules.js" />
+    <Content Remove="wwwroot\js\jq-modules.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="wwwroot\js\jquery-modules.js">
+    <EmbeddedResource Include="wwwroot\js\jq-modules.js">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\DynamicObject\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

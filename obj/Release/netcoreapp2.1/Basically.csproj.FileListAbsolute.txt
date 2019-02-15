@@ -28,3 +28,4 @@ C:\Users\Paul\source\repos\Basically\Basically\obj\Release\netcoreapp2.1\Basical
 C:\Users\Paul\source\repos\Basically\Basically\obj\Release\netcoreapp2.1\Basically.dll
 C:\Users\Paul\source\repos\Basically\Basically\obj\Release\netcoreapp2.1\Basically.pdb
 C:\Users\Paul\source\repos\Basically\Basically\obj\Release\netcoreapp2.1\Basically.csproj.CopyComplete
+C:\Users\Paul\source\repos\Basically\Basically\obj\Release\netcoreapp2.1\Basically.csprojAssemblyReference.cache
