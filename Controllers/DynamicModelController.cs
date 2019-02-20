@@ -9,10 +9,10 @@ using LiteDB;
 
 namespace Basically.Controllers
 {
-    public class DynamicObjectController : Controller
+    public class DynamicModelController : Controller
     {
         private IConnector db;
-        public DynamicObjectController(IConnector Connector)
+        public DynamicModelController(IConnector Connector)
         {
             db = Connector;
         }
@@ -26,7 +26,7 @@ namespace Basically.Controllers
             var formDefinition = new List<FormDefinition>();
             formDefinition.Add(new FormDefinition() { name = "Logo", config_fields = fieldParams, form_control = "textBox" });
             formDefinition.Add(new FormDefinition() { name = "Author", config_fields = fieldParams, form_control = "textBox" });
-            var model = new DynamicObject()
+            var model = new DynamicModel()
             {
                 name = "RootObject",             
                 form_controls = formDefinition
@@ -44,7 +44,7 @@ namespace Basically.Controllers
             try
             {
                 //PW: return model definition
-                var Model = db.GetByID<DynamicObject>(model_id.Value);
+                var Model = db.GetByID<DynamicModel>(model_id.Value);
                 return Json(new { Result = "OK", Record = Model });
             }
             catch (Exception ex)

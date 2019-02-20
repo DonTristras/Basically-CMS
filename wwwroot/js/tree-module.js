@@ -1,6 +1,4 @@
-﻿//PW: In this file all the jquery written modules
-
-//PW: Module for document tree
+﻿//PW: Module for document tree
 var documentApp = (function () {
     "use strict"
     var self = this;

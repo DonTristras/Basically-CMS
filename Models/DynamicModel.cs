@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Basically.Models
 {
-    public class DynamicObject : IModel
+    public class DynamicModel : IModel
     {
         public int _id { get; set; }
         public string name { get; set; }
