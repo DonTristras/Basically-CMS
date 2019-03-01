@@ -31,9 +31,9 @@
     textArea: (function () {
         "use strict"
         // Mandatory
-        var properties = [
-            "displayName"
-        ];
+        var properties = {
+            "displayName": { value: "" }
+        };
         // Mandatory
         var getValue = function (elem) {
             return $("textarea", elem).val();

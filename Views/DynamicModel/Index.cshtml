@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="dynamicmodel">
+    <div class="form-area col-md-12">
+        <input type="hidden" name="_id" v-model="$data._id" />
+    </div>
+    <div class="form-area col-md-12">
+        <label>Model Name</label><input type="text" name="name" v-model="$data.name" />
+    </div>
+    <div class="form-area col-md-12">
+        <div v-for="(control, index) in form_controls" class="form-area">
+            <div><label>Field name</label><input type="text" v-model="control.name" /></div>
+            <div><label>Controller</label>
+                 <select v-model="control.controller">
+                     <option value="" selected>Select</option>
+                     <option v-for="item in controllerNames" :value="item">{{ item }}</option>
+                 </select>
+            </div>
+            <div class="field-params">
+                <label>Config fields</label>
+                <div v-for="(field, index) in control.config_fields">
+                    <input type="text" v-model="field.name" /> <span v-on:click="deleteField(control.config_fields, index)">X</span>
+                </div>
+                <input type="button" value="+" v-on:click="addField(control.config_fields)" />
+            </div>
+        </div>
+    </div>
+    <div class="form-area">
+        <button onclick="">Save</button>
+    </div>
+</div>
+
