@@ -19,7 +19,7 @@ namespace Basically.Controllers
         public IActionResult Index()
         {
             //Get list of Sites and return in a viewbag
-            ViewBag.SiteList = db.List<Site>().FindAll();
+            ViewBag.SiteList = db.List<Tree>().FindAll();
             return View();
         }
 
@@ -42,10 +42,5 @@ namespace Basically.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

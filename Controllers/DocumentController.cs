@@ -19,7 +19,7 @@ namespace Basically.Controllers
 
         public IActionResult Index(int? site_id)
         {
-            //PW: return document list, as herarchie tree
+            //PW: return document list, as herarchy tree
             ViewBag.SiteID = site_id;
             return View();
         }
@@ -77,7 +77,7 @@ namespace Basically.Controllers
 
             try
             {
-                Site site = db.List<Site>().FindById(Int32.Parse(Model.content));
+                Tree site = db.List<Tree>().FindById(Int32.Parse(Model.content));
                 Model.site = site;
                 db.Create(Model);
                 return Json(new { Result = "OK",  Record = Model});
@@ -94,7 +94,7 @@ namespace Basically.Controllers
             try
             {
                 //PW: Delete model
-                db.Delete<Document>(_id);
+                //db.Delete<Document>(_id);
                 return Json(new { Result = "OK" });
             }
             catch (Exception ex)

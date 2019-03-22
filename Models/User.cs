@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using LiteDB;
 
 namespace Basically.Models
 {
     public class User : IModel
     {
-        public int _id { get; set; }
+        public Guid _id { get; set; }
         public string email { get; set; }
         public string user_name { get; set; }
         public string password { get; set; }

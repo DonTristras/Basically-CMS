@@ -1,13 +1,14 @@
 ﻿using LiteDB;
+using System;
 
 namespace Basically.Infrastructure
 {
     public interface IConnector
     {
         void Create<T>(T Model);
-        void Delete<T>(int id);
+        void Delete<T>(Guid id);
         LiteCollection<T> List<T>();
         void Update<T>(T Model);
-        T GetByID<T>(int id);
+        T GetByID<T>(Guid id);
     }
 }

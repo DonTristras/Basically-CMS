@@ -6,8 +6,7 @@
 
   <ItemGroup>
     <Content Remove="appsettings.json" />
-    <Content Remove="wwwroot\js\document-module.js" />
-    <Content Remove="wwwroot\js\tree-module.js" />
+    <Content Remove="wwwroot\js\tree-component.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,10 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="wwwroot\js\document-module.js">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\js\tree-module.js">
+    <EmbeddedResource Include="wwwroot\js\tree-component.js">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -39,12 +35,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="Views\Site\Index.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
   </ItemGroup>
 
 </Project>

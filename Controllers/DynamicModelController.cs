@@ -39,12 +39,12 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Get(int? model_id)
+        public JsonResult Get(Guid model_id)
         {
             try
             {
                 //PW: return model definition
-                var Model = db.GetByID<DynamicModel>(model_id.Value);
+                var Model = db.GetByID<DynamicModel>(model_id);
                 return Json(new { Result = "OK", Record = Model });
             }
             catch (Exception ex)
@@ -91,7 +91,7 @@ namespace Basically.Controllers
             try
             {
                 //PW: Delete model
-                db.Delete<DynamicModel>(_id);
+                //db.Delete<DynamicModel>(_id);
                 return Json(new { Result = "OK" });
             }
             catch (Exception ex)

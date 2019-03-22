@@ -7,14 +7,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Basically.Models
 {
-    public class Site : IModel
+    public class Tree : IModel
     {
-        public int _id { get; set; }
+        [Required]
+        [BsonId]
+        public Guid _id { get; set; }
+
         [Required]
         [MaxLength(128)]
         public string name { get; set; }
-        [Required]
-        [MaxLength(128)]
-        public string domain { get; set; }
     }
 }

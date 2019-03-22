@@ -10,7 +10,8 @@ namespace Basically.Models
 {
     public class Document : IModel
     {
-        public int _id { get; set; }
+        [Required]
+        public Guid _id { get; set; }
         [Required]
         public string name { get; set; }
         [Required]
@@ -20,12 +21,12 @@ namespace Basically.Models
         [Required]
         public int level { get; set; }
         public bool is_root { get; set; }
-        public int parent_id { get; set; }
+        public Guid parent_id { get; set; }
         [BsonRef("DynamicObject")]
         [Required]
         public string dynamic_object { get; set; }
         [BsonRef("Site")]
         [Required]
-        public Site site { get; set; }
+        public Tree site { get; set; }
     }
 }

@@ -43,7 +43,7 @@ namespace Basically.Infrastructure
             }
         }
 
-        public void Delete<T>(int id)
+        public void Delete<T>(Guid id)
         {
             using (var db = new LiteDatabase(DbFileLocation))
             {
@@ -54,14 +54,14 @@ namespace Basically.Infrastructure
             }
         }
 
-        public T GetByID<T>(int id) {
+        public T GetByID<T>(Guid id) {
             using (var db = new LiteDatabase(DbFileLocation))
             {
                 return db.GetCollection<T>(typeof(T).Name).FindById(id);
             }
         }
         //PW: Method Allow reference deletions
-        private void DeleteReferences(int id, string referencedType, string targetType)
+        private void DeleteReferences(Guid id, string referencedType, string targetType)
         {
             using (var db = new LiteDatabase(DbFileLocation))
             {
@@ -75,7 +75,7 @@ namespace Basically.Infrastructure
             }
         }
         //PW:Wthod which provides a recursive deletetion for referenced objects in the LiteDB mapping
-        private void DeleteRecursive(int pk, string modelName)
+        private void DeleteRecursive(Guid pk, string modelName)
         {
             //PW: Fetches Model objects in runtime where Interface matches
             var Models = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.Namespace == "Basically.Models" && t.IsClass && t.GetInterfaces().Where(i => i.Name == "IModel").Count() > 0);
