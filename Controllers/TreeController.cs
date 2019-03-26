@@ -16,11 +16,21 @@ namespace Basically.Controllers
             db = Connector;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            Tree Model = new Tree() { _id = Guid.NewGuid(), name= "Another item" };
+            //Tree Model = new Tree() { _id = Guid.NewGuid(), name= "Another item" };
             
-            db.Create(Model);
+            //db.Create(Model);
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            //Tree Model = new Tree() { _id = Guid.NewGuid(), name = "Another item" };
+
+            //db.Create(Model);
             return View();
         }
 
@@ -40,7 +50,7 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(Tree Model)
+        public JsonResult Create([FromBody]Tree Model)
         {
             try
             {
@@ -61,7 +71,7 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(Tree Model)
+        public JsonResult Update([FromBody]Tree Model)
         {
             try
             {

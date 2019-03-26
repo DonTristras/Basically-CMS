@@ -79,7 +79,7 @@ using Basically.Models;
                      ");
             EndContext();
             BeginContext(701, 41, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eeb86c8ac2ce45128dc7ff6468a9bb5a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84359feeb5da41d092504e2ba8b270ec", async() => {
                 BeginContext(727, 6, true);
                 WriteLiteral("Select");
                 EndContext();
@@ -104,7 +104,7 @@ using Basically.Models;
             WriteLiteral("\r\n                     ");
             EndContext();
             BeginContext(765, 73, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe6c8d889e94eeb8c1c5f504284f2e6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a84f8973d63844688b1deb9b3d2be8d9", async() => {
                 BeginContext(819, 10, true);
                 WriteLiteral("{{ item }}");
                 EndContext();

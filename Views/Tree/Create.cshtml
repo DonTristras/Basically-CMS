@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+<tree-component inline-template>
+    <section class="row">
+        <div class="col-md-12">
+            <text-box-input validation-message="Text should contain wea" v-bind:model="record" field="name"></text-box-input>
+            <span>{{ record.name }}</span>
+        </div>
+        <div>
+            <input type="button" class="ui-button submit" value="Create new" v-on:click="create(record)"/>
+        </div>
+    </section>
+</tree-component>

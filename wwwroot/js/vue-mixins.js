@@ -18,7 +18,7 @@ var crudBaseMixin = {
         },
         create: function (model) {
             let self = this;
-            axios.get(this.controllerName("create"), model).then(function (result) {
+            axios.post(this.controllerName("create"), model).then(function (result) {
                 if (result.status == "OK") {
                     alert("OKAY!!");
                 } else {

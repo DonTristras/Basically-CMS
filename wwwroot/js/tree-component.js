@@ -5,7 +5,7 @@
 
 Vue.component('tree-component', {
     data: function () {
-        return { record: {}, records: {} };
+        return { record: {name: "aaa"}, records: {} };
     },
     beforeMount() {
         this.list();
