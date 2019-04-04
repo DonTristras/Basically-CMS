@@ -19,19 +19,33 @@ namespace Basically.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            //Tree Model = new Tree() { _id = Guid.NewGuid(), name= "Another item" };
-            
-            //db.Create(Model);
             return View();
         }
-
         [HttpGet]
         public IActionResult Create()
         {
-            //Tree Model = new Tree() { _id = Guid.NewGuid(), name = "Another item" };
-
-            //db.Create(Model);
             return View();
+        }
+        [HttpGet]
+        public IActionResult Update()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public JsonResult Get([FromBody]dynamic payload)
+        {
+            try
+            {
+                //PW: return model definition
+                var Tree = db.List<Tree>().FindById((Guid)payload.id);
+                return Json(new { status = "OK", record = Tree });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = "ERROR", message = ex.Message });
+            }
         }
 
         [HttpPost]

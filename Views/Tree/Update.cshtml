@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Update";
+}
+
+<tree-component inline-template command="UPDATE" id="@Url.ActionContext.RouteData.Values["id"]">
+    <section class="row">
+        <div class="col-md-12">
+            <partial name="_Form.cshtml" />
+        </div>
+        <div>
+            <input type="button" class="ui-button submit" value="Update" v-on:click="update(record)" />
+        </div>
+    </section>
+</tree-component>
+

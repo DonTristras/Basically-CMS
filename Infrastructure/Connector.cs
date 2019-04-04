@@ -30,6 +30,10 @@ namespace Basically.Infrastructure
             using (var db = new LiteDatabase(DbFileLocation))
             {
                 var q = db.GetCollection<T>(typeof(T).Name);
+                if(((dynamic)Model)._id == null || ((dynamic)Model)._id == Guid.Empty) //Set new guid if empty
+                {
+                    ((dynamic)Model)._id = Guid.NewGuid();
+                }
                 q.Insert(Model);
             }   
         }
