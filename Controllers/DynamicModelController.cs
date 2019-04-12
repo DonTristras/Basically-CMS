@@ -26,11 +26,7 @@ namespace Basically.Controllers
             var formDefinition = new List<FormDefinition>();
             formDefinition.Add(new FormDefinition() { name = "Logo", config_fields = fieldParams, form_control = "textBox" });
             formDefinition.Add(new FormDefinition() { name = "Author", config_fields = fieldParams, form_control = "textBox" });
-            var model = new DynamicModel()
-            {
-                name = "RootObject",             
-                form_controls = formDefinition
-            };
+            
             //var updatable = db.GetByID<DynamicObject>(1);
             //updatable.form_controls[0].config_fields = fieldParams;
             //updatable.form_controls[1].config_fields = fieldParams;
@@ -44,7 +40,7 @@ namespace Basically.Controllers
             try
             {
                 //PW: return model definition
-                var Model = db.GetByID<DynamicModel>(model_id);
+                var Model = db.GetByID<Branch>(model_id);
                 return Json(new { Result = "OK", Record = Model });
             }
             catch (Exception ex)
@@ -59,7 +55,7 @@ namespace Basically.Controllers
             try
             {
                 //PW: return ordered list, sliced, chucked and ordered
-                IEnumerable<DynamicModel> SiteList = db.List<DynamicModel>().FindAll();
+                IEnumerable<Branch> SiteList = db.List<Branch>().FindAll();
                 int TotalRecords = SiteList.Count();
                 var ChunkedSiteList = SiteList.OrderByDynamic(jtSorting).Skip(jtStartIndex).Take(jtPageSize);
                 return Json(new { Result = "OK", Records = ChunkedSiteList, TotalRecordCount = TotalRecords });
@@ -71,7 +67,7 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(DynamicModel Model)
+        public JsonResult Create(Branch Model)
         {
 
             try
@@ -101,12 +97,12 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(DynamicModel Model)
+        public JsonResult Update(Branch Model)
         {
             try
             {
                 //PW: Update model
-                db.Update<DynamicModel>(Model);
+                db.Update<Branch>(Model);
                 return Json(new { Result = "OK" });
             }
             catch (Exception ex)

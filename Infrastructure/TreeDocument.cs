@@ -8,7 +8,7 @@ namespace Basically.Infrastructure
 {
     public class TreeDocument
     {
-        public Document Document { get; set; }
+        public Tree Tree { get; set; }
         public IEnumerable<TreeDocument> ChildDocuments { get; set; }
     }
 }

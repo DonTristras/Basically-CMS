@@ -8,26 +8,26 @@ var crudBaseMixin = {
         };
     },
     props: {
-        command: { //command can be CREATE|GET|UPDATE|DELETE|LIST
+        command: { //command can be [create|get|update|delete|list]
             type: String,
             required: true
         },
-        id: { //Required when using CREATE|GET|UPDATE|DELETE command
+        id: { //Required when using [create|get|update|delete] command
             type: String
         },
-        orderBy: { //Optional when using LIST command, accepts field name
+        orderBy: { //Optional when using [list] command, accepts field name
             type: String
         },
-        orderDirection: { //Optional when using LIST command, accepts [ASC,DESC]
+        orderDirection: { //Optional when using [list] command, accepts [asc,desc]
             type: String
         },
-        paginationSize: { //Optional when using LIST command
+        paginationSize: { //Optional when using [list] command
             type: Number
         }
     },
     beforeMount() {
         if (typeof this.command !== "undefined") {
-            if (this.command === "LIST") {
+            if (this.command === "list") {
                 if (typeof this.orderDirection !== "undefined") {
                     this.$data.options["orderDirection"] = this.orderDirection;
                 }
@@ -39,10 +39,10 @@ var crudBaseMixin = {
                 }
                 this.list();
             }
-            if (this.command === "GET") {
+            if (this.command === "get") {
                 this.get(this.id);
             }
-            if (this.command === "UPDATE") {
+            if (this.command === "update") {
                 this.get(this.id);
             }
         }
@@ -193,6 +193,68 @@ var validationMixin = {
                 return regex.test(value);
             }
             return true;
+        }
+    }
+};
+
+
+//Mixin to help add resources for form-inputs and avoid duplicated resources. Returns a promise when loaded
+var resourceHandlerMixin = {
+    methods: {
+        addResource: function (url, type) {
+            return new Promise((resolve, reject) => {
+                if (type === "css") {
+                    //check if css is already loaded and resolve promise if true
+                    var ss = document.getElementsByTagName("link")
+                    for (var i = 0, max = ss.length; i < max; i++) {
+                        if (ss[i].href == url) {
+                            resolve();
+                            return;
+                        }
+                    }
+                    var node = document.createElement("link");
+                    node.href = url;
+                    node.rel = "stylesheet";
+                    document.body.appendChild(node);
+                    resolve();
+                } else if (type === "js") {
+                    //check if js is already loaded and resolve promise if true and loaded
+                    var jsfiles = document.getElementsByTagName("script")
+                    for (var i = 0, max = jsfiles.length; i < max; i++) {
+                        if (jsfiles[i].src == url) { //Check if file exists
+                            if (jsfiles[i].getAttribute("isLoaded") === "true") { //if exists, then check if it's loaded
+                                resolve();
+                                return;
+                            } else { //If it exists, but not loaded
+                                let tries = 10;
+                                myVar = setInterval(function () {
+                                    if (jsfiles[i].getAttribute("isLoaded") === "true") {
+                                        clearInterval(myVar);
+                                        resolve();
+                                    }
+                                    //Try X times before exiting to avoid infinite loop
+                                    if (tries < 0) {
+                                        tries--;
+                                    } else {
+                                        clearInterval(myVar);
+                                        reject();
+                                    }
+                                }, 30);
+                                return;
+                            }
+                        }
+                    }
+                    //Keep execution, load file and resolve promice when JS loaded
+                    let node = document.createElement("script");
+                    node.src = url;
+                    node.setAttribute("isLoaded", false);
+                    node.onload = function () {
+                        node.setAttribute("isLoaded", true);
+                        resolve();
+                    };
+                    document.body.appendChild(node);
+                }
+            });
         }
     }
 };

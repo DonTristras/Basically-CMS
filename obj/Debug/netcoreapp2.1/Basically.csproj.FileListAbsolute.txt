@@ -23,8 +23,8 @@ C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.dll
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.pdb
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.csproj.CopyComplete
-C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Document\index.g.cshtml.cs
-C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\DynamicModel\Index.g.cshtml.cs
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Tree\Create.g.cshtml.cs
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Tree\Update.g.cshtml.cs
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Tree\_Form.g.cshtml.cs
+C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Basically.csprojAssemblyReference.cache
+C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Branch\Edit.g.cshtml.cs

@@ -9,7 +9,7 @@ using LiteDB;
 
 namespace Basically.Models
 {
-    public class DynamicModel : IModel
+    public class Leaf : IModel
     {
         public Guid _id { get; set; }
         public string name { get; set; }

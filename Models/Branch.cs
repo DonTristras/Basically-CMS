@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Basically.Models
 {
-    public class Document : IModel
+    public class Branch : IModel
     {
         [Required]
         public Guid _id { get; set; }
@@ -22,9 +22,9 @@ namespace Basically.Models
         public int level { get; set; }
         public bool is_root { get; set; }
         public Guid parent_id { get; set; }
-        [BsonRef("DynamicObject")]
+        [BsonRef("Leaf")]
         [Required]
-        public string dynamic_object { get; set; }
+        public string Leaf { get; set; }
         [BsonRef("Site")]
         [Required]
         public Tree site { get; set; }

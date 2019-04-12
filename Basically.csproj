@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Content Remove="appsettings.json" />
+    <Content Remove="wwwroot\js\branch-component.js" />
     <Content Remove="wwwroot\js\tree-component.js" />
   </ItemGroup>
 
@@ -14,6 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="wwwroot\js\branch-component.js">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="wwwroot\js\tree-component.js">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

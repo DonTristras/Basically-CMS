@@ -1,15 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<tree-component inline-template command="LIST">
+<tree-component inline-template command="list">
     <section class="row">
-        <div v-for="record in records" class="col-md-3">         
-                <h2>{{ record.name }}</h2>
-                <span><input type="text" v-model="record.name"/></span>
-                <img style="width:100%;" src="https://t1.pixers.pics/img-1fb6f67c/canvas-prints-green-tree-square-shape-for-your-design.jpg?H4sIAAAAAAAAA3WOS27DMAxEryMDskmJ-lg-QLY5giHYSurWH0FS2qCnr4wgy4ILcgYYvoHHnv0twBT2EhJsyzyvAW7LWlUeUsjLb2DItVXNUN2VIWIzHN8hTemIrFWOt1pyIwQ32DfDj6_Bzacv9lFKzANApi4uz_qtrinDtGWQKCwgge7nOVihDDkVxrgeZT9awidhF_c7x3OadwmFyNUJL2nZWG1zVE5hn_HewD-s1w01BZcraAckQBmQdFrj5aodVbikcXbSokPqg5Km92SE894G53vrJ2d1Vyl_j5N2dioBAAA=" />
-                <a :href="'/tree/update/' + record._id ">UPDATE</a>
-                <span v-on:click="remove(record)">DELETE</span>
-        </div>
-     
+        <div v-for="record in records" class="col-md-2">         
+                <h3>{{ record.name }}</h3>
+               
+                <a :href="'/tree/update/' + record._id">Edit tree settings</a>
+                <span v-on:click="remove(record)">Delete</span>
+        </div>    
     </section>
 </tree-component>
+
+<div><a href="/tree/create">Plant new tree</a></div>
