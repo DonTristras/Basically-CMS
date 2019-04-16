@@ -2,10 +2,10 @@
 @{
     ViewData["Title"] = "Edit your tree branches";
 }
-
+<!--https://jsfiddle.net/pgn4wk5d/13/-->
 <section class="row">
     <div class="col-md-12">
-        <branch-component :load="true"></branch-component>
+        <branch-recursive-component :load="true" :root="true" tree-id="@Url.ActionContext.RouteData.Values["id"]" command=""></branch-recursive-component>
     </div>
 </section>
 

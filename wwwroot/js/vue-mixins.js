@@ -4,13 +4,12 @@
 var crudBaseMixin = {
     data: function () {
         return {
-            record: {}, records: {}, options: {}
+            record: {}, records: [], options: {}
         };
     },
     props: {
-        command: { //command can be [create|get|update|delete|list]
-            type: String,
-            required: true
+        command: { //command can be [create|get|update|delete|list] or custom
+            type: String
         },
         id: { //Required when using [create|get|update|delete] command
             type: String
@@ -29,13 +28,13 @@ var crudBaseMixin = {
         if (typeof this.command !== "undefined") {
             if (this.command === "list") {
                 if (typeof this.orderDirection !== "undefined") {
-                    this.$data.options["orderDirection"] = this.orderDirection;
+                    this.options["orderDirection"] = this.orderDirection;
                 }
                 if (typeof this.paginationSize !== "undefined") {
-                    this.$data.options["paginationSize"] = this.paginationSize;
+                    this.options["paginationSize"] = this.paginationSize;
                 }
                 if (typeof this.orderBy !== "undefined") {
-                    this.$data.options["orderBy"] = this.orderBy;
+                    this.options["orderBy"] = this.orderBy;
                 }
                 this.list();
             }

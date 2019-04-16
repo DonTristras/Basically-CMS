@@ -8,30 +8,18 @@ using Basically.Infrastructure;
 using LiteDB;
 namespace Basically.Controllers
 {
-    public class TreeController : Controller
+    public class LeafController : Controller
     {
         private IConnector db;
-        public TreeController(IConnector Connector)
+        public LeafController(IConnector Connector)
         {
             db = Connector;
         }
 
-        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpGet]
-        public IActionResult Update()
-        {
-            return View();
-        }
-
 
         [HttpPost]
         public JsonResult Get([FromBody]dynamic payload)
@@ -54,7 +42,7 @@ namespace Basically.Controllers
             try
             {
                 //PW: return model definition
-                var Trees = db.List<Tree>().FindAll();
+                var Trees = db.List<Leaf>().FindAll();
                 return Json(new { status = "OK", record = Trees });
             }
             catch (Exception ex)
@@ -64,7 +52,7 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create([FromBody]Tree Model)
+        public JsonResult Create([FromBody]Leaf Model)
         {
             try
             {
@@ -73,19 +61,10 @@ namespace Basically.Controllers
                 {
                     Guid GeneratedTreeId = db.Create(Model);
 
-                    /*
-                    var inputs = new List<formInput>();
-                    var configs = new List<ConfigField>();
-                    configs.Add(new ConfigField() { name = "root", value = "true"});
-                    inputs.Add(new formInput() { name = "Name", form_control = "text-box-input", config_fields = configs });
-                    Guid GeneratedLeafId = db.Create<Leaf>(new Leaf() { name = "root.leaf", form_inputs = inputs});
-                    */
-
-                    //Create root leaf
-                   // db.Create<Branch>(new Branch() { is_root = true, name = "Root", level = 0, tree = db.GetByID<Tree>(GeneratedTreeId), order = 0, _id = Guid.NewGuid(), leaf = db.GetByID<Leaf>(GeneratedLeafId), });
                     return Json(new { status = "OK" });
                 }
-                else {
+                else
+                {
                     return Json(new { status = "INVALID_DATA" });
                 }
             }
@@ -96,7 +75,7 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update([FromBody]Tree Model)
+        public JsonResult Update([FromBody]Leaf Model)
         {
             try
             {
@@ -118,12 +97,12 @@ namespace Basically.Controllers
         }
 
         [HttpPost]
-        public JsonResult Delete([FromBody]Tree Model)
+        public JsonResult Delete([FromBody]Leaf Model)
         {
             try
             {
                 //PW: remove model
-                db.Delete<Tree>(Model._id);
+                db.Delete<Leaf>(Model._id);
                 return Json(new { status = "OK" });
             }
             catch (Exception ex)

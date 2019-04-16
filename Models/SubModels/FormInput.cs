@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Basically.Models
 {
-    public class FormDefinition
+    public class formInput
     {
         public string name { get; set; }
         public List<ConfigField> config_fields { get; set; }

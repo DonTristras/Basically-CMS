@@ -205,7 +205,7 @@ Vue.component('radio-input', {
     },
     created: function () {
         if (typeof this.options !== "undefined") { // check if there is a option list defined manually and use it
-            this.$data.optionList = this.options;
+            this.optionList = this.options;
         } else if (typeof this.cmsController !== "undefined" && typeof this.cmsAction !== "undefined") { //check if there is a custom controller/action defined for CMS usage only
             this.cmsCall();
         } else if (typeof this.leaf !== "undefined") { //check leaf defined for dynamic usage
@@ -292,7 +292,7 @@ Vue.component('dropdown-input', {
     },
     created: function () {
         if (typeof this.options !== "undefined") { // check if there is a option list defined manually and use it
-            this.$data.optionList = this.options;
+            this.optionList = this.options;
         } else if (typeof this.cmsController !== "undefined" && typeof this.cmsAction !== "undefined") { //check if there is a custom controller/action defined for CMS usage only
             this.cmsCall();
         } else if (typeof this.leaf !== "undefined") { //check leaf defined for dynamic usage

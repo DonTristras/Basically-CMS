@@ -29,5 +29,22 @@ namespace Basically.Controllers
             return View();
         }
 
+        [HttpPost]
+        public JsonResult Root([FromBody]dynamic payload)
+        {
+            try
+            {
+                Guid tree_id = (Guid)payload.tree_id;
+                var Branch = db.List<Branch>();
+                Branch.Include(x => x.is_root);
+                //Branch.Include(x => x.tree._id == tree_id);
+                return Json(new { status = "OK", record = Branch.FindOne(Query.All())});
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = "ERROR", message = ex.Message });
+            }
+        }
+
     }
 }

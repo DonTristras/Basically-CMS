@@ -26,7 +26,7 @@ namespace Basically.Infrastructure
             }
         }
 
-        public void Create<T>(T Model) {
+        public Guid Create<T>(T Model) {
             using (var db = new LiteDatabase(DbFileLocation))
             {
                 var q = db.GetCollection<T>(typeof(T).Name);
@@ -34,9 +34,10 @@ namespace Basically.Infrastructure
                 {
                     ((dynamic)Model)._id = Guid.NewGuid();
                 }
-                q.Insert(Model);
+                return q.Insert(Model);
             }   
         }
+
 
         public void Update<T>(T Model)
         {
@@ -64,6 +65,7 @@ namespace Basically.Infrastructure
                 return db.GetCollection<T>(typeof(T).Name).FindById(id);
             }
         }
+
         //PW: Method Allow reference deletions
         private void DeleteReferences(Guid id, string referencedType, string targetType)
         {
@@ -78,6 +80,7 @@ namespace Basically.Infrastructure
                 }
             }
         }
+
         //PW:Wthod which provides a recursive deletetion for referenced objects in the LiteDB mapping
         private void DeleteRecursive(Guid pk, string modelName)
         {

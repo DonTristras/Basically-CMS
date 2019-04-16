@@ -15,7 +15,7 @@ namespace Basically.Models
         [Required]
         public string name { get; set; }
         [Required]
-        public string order { get; set; }
+        public int order { get; set; }
         [Required]
         public string content { get; set; }
         [Required]
@@ -24,9 +24,11 @@ namespace Basically.Models
         public Guid parent_id { get; set; }
         [BsonRef("Leaf")]
         [Required]
-        public string Leaf { get; set; }
-        [BsonRef("Site")]
+        public Leaf leaf { get; set; }
+        [BsonRef("Tree")]
         [Required]
-        public Tree site { get; set; }
+        public Tree tree { get; set; }
+        [Required]
+        public Guid leaf_data_id { get; set; }
     }
 }

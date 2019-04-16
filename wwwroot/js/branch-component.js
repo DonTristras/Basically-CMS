@@ -4,38 +4,21 @@
 // CSS triangles : https://codepen.io/yukulele/pen/KCvbi
 
 Vue.component('branch-component', {
-    props: {
-        "parentId": {
-            type: String,
-            required: true
-        },
-        "load": {
-            type: Boolean,
-            required: true
-        }
-    },
     beforeMount() {
     
     },
     created() {
-        //Event called when CRUD operation run successfully
         this.$on('success', function (message) {
-            //Add your success CRUD handling here
-            alert(message);
+
         });
-        //Event called when CRUD operation failed
         this.$on('failure', function (message) {
-            //Add your failure CRUD handling here
-            alert(message);
-        });  
-        //Event called when form is invalidated
+
+        });
         this.$on('invalid', function (message) {
-            //Add your validation message
-            alert(message);
-        }); 
+
+        });
         this.$on('created', function (message) {
-            //Reload form once created
-            
+
         });
         this.$on('listed', function (message) {
 
@@ -50,20 +33,86 @@ Vue.component('branch-component', {
 
         });
     },
-    watch: {
-        load: function (newVal, oldVal) {
-            if (newVal) {
-                this.list();
-            }
-        }   
+    methods: {
+        
+    },
+    mixins: [crudBaseMixin]
+});
+
+//Component version to load recursive tree
+
+Vue.component('branch-recursive-component', {
+    props: {
+        "parentId": {
+            type: String,
+            required: false,
+            default: ""
+        },
+        "load": {
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        "root": {
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        "treeId": {
+            required: true,
+            type: String,
+        }
+    },
+    beforeMount() {
+        if (this.root) {
+            this.getRoot();
+        } else if (this.parentId !== "") {
+
+        }
+    },
+    created() {
+        this.$on('success', function (message) {
+
+        });
+        this.$on('failure', function (message) {
+
+        });
+        this.$on('invalid', function (message) {
+    
+        });
+        this.$on('created', function (message) {
+
+        });
+        this.$on('listed', function (message) {
+
+        });
+        this.$on('removed', function (message) {
+
+        });
+        this.$on('updated', function (message) {
+
+        });
+        this.$on('retrieved', function (message) {
+
+        });
     },
     methods: {
-
+        getRoot: function () {
+            let self = this;
+            axios.post(this.controllerName("root"), { tree_id: this.treeId }).then(function (result) {
+                if (result.data.status == "OK") {
+                    self.records.push(result.data.record);
+                    self.$emit("retrieved");
+                } else {
+                    self.$emit("failure", "Retrieving failed");
+                }
+            });
+        }
     },
     template: `<ul class="branch-list">
                     <li v-for="branch in records">
                         <div>{{branch.name}}</div>
-                        <branch-component :parent-id="" :load="false"></branch-component>
+                        <branch-recursive-component :parent-id="record._id" :load="false" v-id="load"></branch-recursive-component>
                     </li>
                </ul>`,
     mixins: [crudBaseMixin]

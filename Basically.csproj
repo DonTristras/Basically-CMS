@@ -7,6 +7,7 @@
   <ItemGroup>
     <Content Remove="appsettings.json" />
     <Content Remove="wwwroot\js\branch-component.js" />
+    <Content Remove="wwwroot\js\leaf-component.js" />
     <Content Remove="wwwroot\js\tree-component.js" />
   </ItemGroup>
 
@@ -16,6 +17,9 @@
 
   <ItemGroup>
     <EmbeddedResource Include="wwwroot\js\branch-component.js">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wwwroot\js\leaf-component.js">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="wwwroot\js\tree-component.js">
@@ -39,6 +43,15 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Branch\Update.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Branch\_Form.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

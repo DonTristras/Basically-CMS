@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Leaves";
+}
+
+<h2>Index</h2>
+
+<leaf-component inline-template command="list">
+    <section>
+        <div v-for="record in records">
+            {{ record.name }}
+        </div>
+    </section>
+</leaf-component>

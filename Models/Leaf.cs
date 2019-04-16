@@ -13,6 +13,6 @@ namespace Basically.Models
     {
         public Guid _id { get; set; }
         public string name { get; set; }
-        public List<FormDefinition> form_controls { get; set; }
+        public List<formInput> form_inputs { get; set; }
     }
 }
