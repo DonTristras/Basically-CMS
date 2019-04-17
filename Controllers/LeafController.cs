@@ -20,6 +20,14 @@ namespace Basically.Controllers
         {
             return View();
         }
+        public IActionResult Update()
+        {
+            return View();
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         [HttpPost]
         public JsonResult Get([FromBody]dynamic payload)
@@ -27,8 +35,8 @@ namespace Basically.Controllers
             try
             {
                 //PW: return model definition
-                var Tree = db.List<Tree>().FindById((Guid)payload.id);
-                return Json(new { status = "OK", record = Tree });
+                var Leaf = db.List<Leaf>().FindById((Guid)payload.id);
+                return Json(new { status = "OK", record = Leaf });
             }
             catch (Exception ex)
             {

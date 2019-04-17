@@ -339,7 +339,6 @@ Vue.component('dropdown-input', {
         </div>`
 });
 
-//Create your own form inputs using vue components and reuse it anywhere
 Vue.component('calendar-input', {
     props: {
         model: {
@@ -377,6 +376,63 @@ Vue.component('calendar-input', {
         `<div class="form-field">
             <label>{{ label }}</label>
             <input type="date" v-model="model[field]" v-on:keyup="validate()" :disabled="disabled"></input>
+            <div class="field-warning" v-show="!valid">{{ validationMessage }}</div>
+        </div>`
+});
+
+Vue.component('input-selector-input', {
+    props: {
+        model: {
+            type: Object,
+            required: true
+        },
+        field: {
+            type: String,
+            required: true
+        },
+        validationMessage: String,
+        label: String,
+        required: Boolean,
+        defaultOption: {},
+        disabled: {
+            type: Boolean,
+            default: false
+        }
+    },
+    data: function () {
+        return {
+            valid: true,
+            isFormInput: true
+        }
+    },
+    methods: {
+        validate: function () {
+            this.valid = true;
+            if (!this.validateRequired(this.model[this.field], this.required)) {
+                this.valid = false; return;
+            }
+        },
+        formInputList: function () {
+            let optionList = [];
+            //Vue.options.components.forEach(function (component) {
+                //Check if child component is a valid form input and skip if false
+                //if (typeof component.isFormInput !== "undefined" && !component.isFormInput) {
+                //    return;
+                //}
+                //add form input to list
+                //optionList.push(component.name);
+            //})
+            return optionList;
+        }
+    },
+    mixins: [validationMixin],
+    template:
+        `<div class="form-field">
+            <label>{{ label }}</label>
+                <select :disabled="disabled">
+                    <option v-if="typeof defaultOption !== 'undefined'" :checked="typeof model[field] === 'undefined' || model[field] === '' ? true: false" :value="defaultOption.Key">  {{ defaultOption.Value }} </option>
+                    <option v-if="Array.isArray(optionList)" v-for="key in formInputList()"  :value="key" v-on:click="setValue(key)" :checked="model[field] === key ? true : false "> {{ key }} </option>
+                </select>
             <div class="field-warning" v-show="!valid">{{ validationMessage }}</div>
         </div>`
 });

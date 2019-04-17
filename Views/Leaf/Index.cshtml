@@ -7,8 +7,16 @@
 
 <leaf-component inline-template command="list">
     <section>
-        <div v-for="record in records">
-            {{ record.name }}
+        <div  class="col-md-3">
+            <div class="leaf-tooling">
+
+            </div>
+            <div v-for="record in records">
+                <span v-on:click="">{{ record.name }} {{ record._id }}</span>
+            </div>
+        </div>
+        <div  class="col-md-9">
+            <iframe src="/leaf/update/03c3e0a6-8805-41ba-8cc6-f38525b0c926" style="height:100vh;width:100%;"></iframe>
         </div>
     </section>
 </leaf-component>

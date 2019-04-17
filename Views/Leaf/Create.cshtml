@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+<leaf-component inline-template command="create">
+    <section class="row">
+        <div class="col-md-12">
+            <partial name="_Form.cshtml" />
+        </div>
+        <div>
+            <input type="button" class="ui-button submit" value="Create new" v-on:click="create(record)" />
+        </div>
+    </section>
+</leaf-component>

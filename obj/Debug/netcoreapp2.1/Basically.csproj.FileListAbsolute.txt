@@ -35,7 +35,6 @@ C:\Users\pweinberger\Desktop\banners\source\bin\Debug\netcoreapp2.1\Basically.dl
 C:\Users\pweinberger\Desktop\banners\source\bin\Debug\netcoreapp2.1\Basically.pdb
 C:\Users\pweinberger\Desktop\banners\source\bin\Debug\netcoreapp2.1\Basically.Views.dll
 C:\Users\pweinberger\Desktop\banners\source\bin\Debug\netcoreapp2.1\Basically.Views.pdb
-C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Basically.csprojAssemblyReference.cache
 C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Basically.csproj.CoreCompileInputs.cache
 C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Basically.RazorAssemblyInfo.cache
 C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Basically.RazorAssemblyInfo.cs
@@ -62,3 +61,6 @@ C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Razor\Views\
 C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Razor\Views\Branch\Update.g.cshtml.cs
 C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Razor\Views\Branch\_Form.g.cshtml.cs
 C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Razor\Views\Leaf\Index.g.cshtml.cs
+C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Razor\Views\Leaf\Create.g.cshtml.cs
+C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Razor\Views\Leaf\Update.g.cshtml.cs
+C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Razor\Views\Leaf\_Form.g.cshtml.cs
