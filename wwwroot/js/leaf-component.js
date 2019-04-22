@@ -27,6 +27,14 @@
         });
     },
     methods: {
+        editLeaf: function (id) {
+            this.$refs.leafEditArea.src = "/leaf/update/" + id;
+        },
+        createLeaf: function () {
+            this.$refs.leafEditArea.src = "/leaf/create/";
+        }
+    },
+    beforeMount() {
 
     },
     mixins: [crudBaseMixin]
