@@ -32,6 +32,9 @@
         },
         createLeaf: function () {
             this.$refs.leafEditArea.src = "/leaf/create/";
+        },
+        addInput: function () {
+
         }
     },
     beforeMount() {

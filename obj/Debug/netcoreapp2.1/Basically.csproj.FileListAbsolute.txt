@@ -71,3 +71,4 @@ C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Vie
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Leaf\Index.g.cshtml.cs
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Leaf\Update.g.cshtml.cs
 C:\Users\Paul\source\repos\Basically\Basically\obj\Debug\netcoreapp2.1\Razor\Views\Leaf\_Form.g.cshtml.cs
+C:\Users\pweinberger\Desktop\banners\source\obj\Debug\netcoreapp2.1\Basically.csprojAssemblyReference.cache

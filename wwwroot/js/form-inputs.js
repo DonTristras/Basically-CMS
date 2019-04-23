@@ -402,7 +402,8 @@ Vue.component('input-selector-input', {
     data: function () {
         return {
             valid: true,
-            isFormInput: true
+            isFormInput: true,
+            propList: {}
         }
     },
     methods: {
@@ -428,16 +429,27 @@ Vue.component('input-selector-input', {
                 }
             }
             return optionList;
+        },
+        openProperties: function (element) {
+            let props = Vue.options.components[element.target.value].options.props;
+            let propList = [];
+            for (var prop in props) {
+                propList.push({Key: prop, Value: ""});
+            }
+            this.propList = propList;
         }
     },
     mixins: [validationMixin],
     template:
         `<div class="form-field">
-            <label>{{ label }}</label>
-                <select :disabled="disabled">
+            <label>{{ label }}</label>  
+                <select :disabled="disabled" @change="openProperties">
                     <option v-if="typeof defaultOption !== 'undefined'" :checked="typeof model[field] === 'undefined' || model[field] === '' ? true: false" :value="defaultOption.Key">  {{ defaultOption.Value }} </option>
-                    <option v-for="key in formInputList()"  :value="key" v-on:click="setValue(key)" :checked="model[field] === key ? true : false "> {{ key }} </option>
+                    <option v-for="key in formInputList()"  :value="key" :checked="model[field] === key ? true : false"> {{ key }} </option>
                 </select>
+                <div v-for="prop in propList" >
+                    <div>{{ prop.Key }}</div> <input v-model="prop.Value"/>
+                </div>
             <div class="field-warning" v-show="!valid">{{ validationMessage }}</div>
         </div>`
 });
