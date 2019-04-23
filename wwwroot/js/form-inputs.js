@@ -414,14 +414,19 @@ Vue.component('input-selector-input', {
         },
         formInputList: function () {
             let optionList = [];
-            //Vue.options.components.forEach(function (component) {
+            var components = Vue.options.components;
+            for (var component in components) {
                 //Check if child component is a valid form input and skip if false
-                //if (typeof component.isFormInput !== "undefined" && !component.isFormInput) {
-                //    return;
-                //}
-                //add form input to list
-                //optionList.push(component.name);
-            //})
+                try {
+                    var isFormInput = components[component].options.data().isFormInput;
+                    if (typeof isFormInput !== "undefined" && isFormInput) {
+                        //add form input to list
+                        optionList.push(component);
+                    }
+                } catch (error) {
+                   //Catch error to avoid system components undefined properties
+                }
+            }
             return optionList;
         }
     },
@@ -431,7 +436,7 @@ Vue.component('input-selector-input', {
             <label>{{ label }}</label>
                 <select :disabled="disabled">
                     <option v-if="typeof defaultOption !== 'undefined'" :checked="typeof model[field] === 'undefined' || model[field] === '' ? true: false" :value="defaultOption.Key">  {{ defaultOption.Value }} </option>
-                    <option v-if="Array.isArray(optionList)" v-for="key in formInputList()"  :value="key" v-on:click="setValue(key)" :checked="model[field] === key ? true : false "> {{ key }} </option>
+                    <option v-for="key in formInputList()"  :value="key" v-on:click="setValue(key)" :checked="model[field] === key ? true : false "> {{ key }} </option>
                 </select>
             <div class="field-warning" v-show="!valid">{{ validationMessage }}</div>
         </div>`
