@@ -442,7 +442,8 @@ Vue.component('input-selector-input', {
     mixins: [validationMixin],
     template:
         `<div class="form-field">
-            <label>{{ label }}</label>  
+            <label>{{ label }}</label> 
+                <div ref="">
                 <select :disabled="disabled" @change="openProperties">
                     <option v-if="typeof defaultOption !== 'undefined'" :checked="typeof model[field] === 'undefined' || model[field] === '' ? true: false" :value="defaultOption.Key">  {{ defaultOption.Value }} </option>
                     <option v-for="key in formInputList()"  :value="key" :checked="model[field] === key ? true : false"> {{ key }} </option>
